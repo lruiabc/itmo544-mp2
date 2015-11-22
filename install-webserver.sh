@@ -9,6 +9,7 @@ mv ./../itmo544-mp2/images /var/www/html/images
 mv ./../itmo544-mp2/vendor /var/www/html/vendor
 mv ./../itmo544-mp2/index.html /var/www/html
 mv ./../itmo544-mp2/*.php /var/www/html
+mv ./../itmo544-mp2/*.asp /var/www/html
 
 curl -sS http://getcomposer.org/installer | php
 php composer.phar require aws/aws-sdk-php
@@ -16,7 +17,7 @@ php composer.phar require aws/aws-sdk-php
 #echo -e "\nSleeping 5 seconds"
 #for i in {0..5}; do echo -ne '.';sleep 1;done
 
-sudo mv ./../itmo-544-mp2/vendor /var/www/html/vendor
+sudo mv ./../itmo544-mp2/vendor /var/www/html/vendor
 
 sudo php /var/www/html/setup.php
 
