@@ -5,6 +5,9 @@ date_default_timezone_set('America/Chicago');
 session_start();
 require 'vendor/autoload.php';
 use Aws\Rds\RdsClient;
+use Aws\Common\Aws;
+use Aws\Sns
+
 
 //echo $_FILES;
 echo $_POST['uname'];
@@ -94,4 +97,37 @@ while ($row = $res->fetch_assoc()){
 	echo $row['id'] . " " .$row['name']." " .$row['email']. " " .$row['phone'];
 }
 $link->close();
+
+$resultTopic = $client->createTopic(array(
+    // Name is required
+    'Name' => 'mp2',
+));
+
+$resultAttributes = $client->setTopicAttributes(array(
+    // TopicArn is required
+    'TopicArn' => "$resultTopic",
+    // AttributeName is required
+    'AttributeName' => 'DisplayName',
+    'AttributeValue' => 'mp2',
+));
+//$resultEndpoint = $client->getEndpointAttributes(array(
+    // EndpointArn is required
+ //   'EndpointArn' => "$phone",
+//));
+$resultSubscribe = $client->subscribe(array(
+    // TopicArn is required
+    'TopicArn' => "$resultTopic",
+    // Protocol is required
+    'Protocol' => 'sms',
+    'Endpoint' => "$phone",
+));
+$resultConfirmSubscription = $client->confirmSubscription(array(
+    // TopicArn is required
+    'TopicArn' => "$resultTopic",
+    // Token is required
+    'Token' => 'string',
+    'AuthenticateOnUnsubscribe' => 'string',
+));
+
+
 ?>
