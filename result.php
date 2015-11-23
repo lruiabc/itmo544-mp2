@@ -98,36 +98,22 @@ while ($row = $res->fetch_assoc()){
 }
 $link->close();
 
-$resultTopic = $client->createTopic(array(
-    // Name is required
-    'Name' => 'mp2',
+use Aws\Sns;
+require 'vendor/autoload.php';
+
+use Aws\Rds\RdsClient;
+$client = RdsClient::factory(array(
+'version' =>'latest',	
+'region' => 'us-west-2'
+
+$result = $client->subscribe(array(
+    // TopicArn is required
+    'TopicArn' => "arn:aws:sns:us-west-2:138293925568:mp2",
+    // Protocol is required
+    'Protocol' => 'email',
+    'Endpoint' => "$email",
 ));
 
-$resultAttributes = $client->setTopicAttributes(array(
-    // TopicArn is required
-    'TopicArn' => "$resultTopic",
-    // AttributeName is required
-    'AttributeName' => 'DisplayName',
-    'AttributeValue' => 'mp2',
-));
-//$resultEndpoint = $client->getEndpointAttributes(array(
-    // EndpointArn is required
- //   'EndpointArn' => "$phone",
-//));
-$resultSubscribe = $client->subscribe(array(
-    // TopicArn is required
-    'TopicArn' => "$resultTopic",
-    // Protocol is required
-    'Protocol' => 'sms',
-    'Endpoint' => "$phone",
-));
-$resultConfirmSubscription = $client->confirmSubscription(array(
-    // TopicArn is required
-    'TopicArn' => "$resultTopic",
-    // Token is required
-    'Token' => 'string',
-    'AuthenticateOnUnsubscribe' => 'string',
-));
 
 
 ?>
