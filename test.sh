@@ -55,5 +55,8 @@ aws cloudwatch put-metric-alarm --alarm-name cpu-mi --alarm-description "Alarm w
 #      fi  
 #     done
 #fi
-
+#sns service
+ARN=('aws sns creat-topic --name mp2')
+echo "this is the ARN:$ARN"
+aws sns set-topic-attributes --topic-arn $attribute-name displayName --attribute-value mp2
 
