@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#sns service
+ARN=('aws sns create-topic --name mp2')
+echo "this is the ARN:$ARN"
+aws sns set-topic-attributes --topic-arn $attribute-name displayName --attribute-value mp2
+aws sns subscribe --topic-arn $ARN  --protocol email --notification-endpoint lrui@hawk.iit.edu
+aws sns publish --topic-arn $ARN --message "best"
+
+
+
 declare -a ELBURLARR
 mapfile -t ELBURLARR < <(aws elb create-load-balancer --load-balancer-name itmo544-rui-lb  --listeners Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80 --subnets $5 --security-groups $4 --output=text); echo $ELBURLARR
 
@@ -55,9 +64,4 @@ aws cloudwatch put-metric-alarm --alarm-name cpu-mi --alarm-description "Alarm w
 #      fi  
 #     done
 #fi
-#sns service
-ARN=('aws sns create-topic --name mp2')
-echo "this is the ARN:$ARN"
-aws sns set-topic-attributes --topic-arn $attribute-name displayName --attribute-value mp2
-aws sns subscribe --topic-arn $ARN  --protocol email --notification-endpoint lrui@hawk.iit.edu
-aws sns publish --topic-arn $ARN --message "best"
+
