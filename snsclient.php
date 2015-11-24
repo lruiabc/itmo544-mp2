@@ -17,11 +17,17 @@ $client = RdsClient::factory(array(
 #publish
 
 $result = $client->subscribe(array(
-    'TopicArn' => "",
+    'TopicArn' => "arn:aws:sns:us-west-2:138293925568:mp2",
     'Protocol' => 'email',
     'Endpoint' => "lrui@hawk.iit.edu",
 ));
 
+$result = $client->publish(array(
+    'TopicArn' => 'arn:aws:sns:us-west-2:138293925568:mp2',
+
+    'Message' => 'best',
+
+));
 
 
 
