@@ -117,3 +117,7 @@ $result = $client->subscribe(array(
 
 
 ?>
+If you finish confirm plase submit
+<form action="snclient.php">
+<input type="submit" value="Submit">
+</form>    
