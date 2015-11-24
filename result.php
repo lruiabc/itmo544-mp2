@@ -6,7 +6,7 @@ session_start();
 require 'vendor/autoload.php';
 use Aws\Rds\RdsClient;
 use Aws\Common\Aws;
-use Aws\Sns
+use Aws\Sns;
 
 
 //echo $_FILES;
@@ -45,7 +45,7 @@ $result = $client->putObject(array(
 ));
 $url = $result['ObjectURL'];
 echo $url;
-use Aws\Rds\RdsClient;
+//use Aws\Rds\RdsClient;
 $client = RdsClient::factory(array(
 'version' =>'latest',	
 'region' => 'us-west-2'
@@ -83,7 +83,7 @@ $filename = basename($_FILES['userfile']['name']);
 $s3finishedurl = "none";
 $status=0;
 $issubscribed=0;
-$date_time = time()
+$date_time = time();
 $stmt->bind_param("sssssii",$name,$email,$phone,$filename,$s3rawurl,$s3finishedurl,$status,$issubscribed,$date_time);
 if(!$stmt->execute()){
 	echo "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
@@ -98,26 +98,33 @@ while ($row = $res->fetch_assoc()){
 }
 $link->close();
 
-use Aws\Sns;
-require 'vendor/autoload.php';
 
-use Aws\Rds\RdsClient;
-$client = RdsClient::factory(array(
+use Aws\Sns\SnsClient;
+$client = SnsClient::factory(array(
 'version' =>'latest',	
 'region' => 'us-west-2'
-
-$result = $client->subscribe(array(
-    // TopicArn is required
-    'TopicArn' => "arn:aws:sns:us-west-2:138293925568:mp2",
-    // Protocol is required
-    'Protocol' => 'email',
-    'Endpoint' => "$email",
 ));
 
 
 
-?>
+
+
+$result = $client->subscribe(array(
+    'TopicArn' => "arn:aws:sns:us-west-2:138293925568:mp2",
+    'Protocol' => 'email',
+    'Endpoint' => "lrui@hawk.iit.edu",
+));
+
+#publish
+$result = $client->publish(array(
+    'TopicArn' => 'arn:aws:sns:us-west-2:138293925568:mp2',
+
+    'Message' => 'best',
+
+));
 If you finish confirm plase submit
 <form action="snclient.php">
 <input type="submit" value="Submit">
-</form>    
+</form>  
+
+?>
