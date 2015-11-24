@@ -57,24 +57,6 @@ echo $row['id'] . "Email: " . $row['email'] ."uname:" . $row['uname'];
 $link->close();
 
 
-$result = $client->publish(array(
-    'TopicArn' => 'arn:aws:sns:us-west-2:0123456789012:my-topic',
-//    'TargetArn' => 'string',
-//     Message is required
-    'Message' => 'good code',
-/*    'Subject' => 'string',
-    'MessageStructure' => 'string',
-    'MessageAttributes' => array(
-        // Associative array of custom 'String' key names
-        'String' => array(
-            // DataType is required
-            'DataType' => 'string',
-            'StringValue' => 'string',
-            'BinaryValue' => 'string',
-        ),
-        // ... repeated
-    ),*/
-));
 ?>
 
 </body>
