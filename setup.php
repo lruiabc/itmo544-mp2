@@ -4,7 +4,6 @@ use Aws\Rds\RdsClient;
 
 /*
 $link = mysqli_connect("itmo544grh-mp1.ckh0wwv6itjw.us-west-2.rds.amazonaws.com","rui","110224Fish","itmoruidb") or die("Error " . mysqli_error($link));
-
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
@@ -87,6 +86,6 @@ else {
 $link->close();
 
 ?>
-~                                                                                                                                                                                                            
+                                                                                                                                                                                 
 ~                                                                                                                                                                                                            
 ~       
