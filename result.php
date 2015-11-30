@@ -102,7 +102,7 @@ $client = SnsClient::factory(array(
 $result = $client->subscribe(array(
     'TopicArn' => "arn:aws:sns:us-west-2:138293925568:mp2",
     'Protocol' => 'email',
-    'Endpoint' => "lrui@hawk.iit.edu",
+    'Endpoint' => "$email",
 ));
 
 #publish
@@ -115,6 +115,6 @@ $result = $client->publish(array(
 
 ?>
 If you finish confirm plase submit
-<form action="snclient.php">
+<form action="snsclient.php">
 <input type="submit" value="Submit">
 </form>  
