@@ -84,7 +84,7 @@ $s3finishedurl = "none";
 $status=0;
 $issubscribed=0;
 $date_time = time();
-$stmt->bind_param("sssssii",$name,$email,$phone,$filename,$s3rawurl,$s3finishedurl,$status,$issubscribed,$date_time);
+$stmt->bind_param("sssssii",$name,$email,$phone,$filename,$s3rawurl,$s3finishedurl,$status,$issubscribed);
 if(!$stmt->execute()){
 	echo "Execute failed:(" . $stmt->errno . ")" . $stmt->error;
 }
