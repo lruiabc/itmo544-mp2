@@ -4,7 +4,7 @@
 declare -a ARN
 mapfile -t ARN < <(aws sns create-topic --name mp2)
 echo "this is the ARN:$ARN"
-aws sns set-topic-attributes --topic-arn $attribute-name displayName --attribute-value mp2
+aws sns set-topic-attributes --topic-arn $ARN --attribute-name displayName --attribute-value mp2
 #aws sns subscribe --topic-arn $ARN  --protocol email --notification-endpoint lrui@hawk.iit.edu
 #aws sns publish --topic-arn $ARN --message "best"
 
