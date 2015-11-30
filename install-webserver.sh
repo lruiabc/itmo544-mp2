@@ -3,7 +3,7 @@
 sudo apt-get update -y
 sudo apt-get install -y apache2 git php5 php5-curl mysql-client curl php5-mysql
 
-git clone https://github.com/lruiabc/itmo544mp1.git
+git clone https://github.com/lruiabc/itmo544-mp2.git
 
 mv ./../itmo544-mp2/images /var/www/html/images
 mv ./../itmo544-mp2/vendor /var/www/html/vendor
