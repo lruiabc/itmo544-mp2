@@ -122,9 +122,9 @@ $result = $client->publish(array(
     'Message' => 'best',
 
 ));
+
+?>
 If you finish confirm plase submit
 <form action="snclient.php">
 <input type="submit" value="Submit">
 </form>  
-
-?>
