@@ -35,9 +35,7 @@ while ($row = $res->fetch_assoc()) {
     echo "<img src =\" " . $row['s3rawurl'] . "\" /><img src =\"" .$row['s3finishedurl'] . "\"/>";
 echo $row['id'] . "Email: " . $row['email'] ."uname:" . $row['uname'];
 
-//$image=new Imagick(realpath($row['s3rawurl']));
-//$image->thumbnaiImage(100,0);
-//echo  $image;
+
 }
 $link->close();
 
